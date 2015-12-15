@@ -89,5 +89,14 @@ class ViewController: UIViewController {
         view.endEditing(true)
     }
     
+    @IBAction func screenshotShare(sender: AnyObject) {
+        let bounds = UIScreen.mainScreen().bounds
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+        self.view.drawViewHierarchyInRect(bounds, afterScreenUpdates: false)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        let activityViewController = UIActivityViewController(activityItems: [img], applicationActivities: nil)
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+    }
 }
 
