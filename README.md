@@ -32,7 +32,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+As this was my first time using Swift, there were quite a few hurdles to get through to finally finish this app. As I've used mostly high level languages and platforms up until this point, one pair I had to learn to differentiate between was doubles and integers. Additionally, I've always debugged using breakpoints, so learning to do that within swift was rather confusing. The way xcode organizes projects was also foreign to me-- I had never used a story board and its "drag and drop" features. Of course debugging took as long as it always does, but it was interesting to learn swift at an elementary level and how it interacts with different features of the phone.
 
 ## License
 
