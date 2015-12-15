@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var twoPersonLabel: UILabel!
+    @IBOutlet weak var threePersonLabel: UILabel!
+    @IBOutlet weak var fourPersonLabel: UILabel!
     
     var tipPercentages = []
     
@@ -24,6 +27,9 @@ class ViewController: UIViewController {
         
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
+        twoPersonLabel.text = "$0.00"
+        threePersonLabel.text = "$0.00"
+        fourPersonLabel.text = "$0.00"
         
         // Change Navbar Height
         
@@ -37,7 +43,7 @@ class ViewController: UIViewController {
         let a = defaults.doubleForKey("bill_amount")
         
         if a != 0.0 {
-            billField.text = String(format: "$%.2f", a)
+            billField.text = String(format: "%.2f", a)
         }
     }
     
@@ -47,19 +53,32 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onBillEdit(sender: AnyObject) {
+        // Array of tips
         let tipPercentages = [0.12, 0.15, 0.18, 0.22, 0.25]
         let tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
         
+        // Tip And Total Calculation
         let billAmount = NSString(string: billField.text!).doubleValue
         let tip = billAmount * tipPercentage
         let total = billAmount + tip
         
+        // Put calc values in labels
         totalLabel.text = String(format: "$%.2f", total)
         tipLabel.text = String(format: "$%.2f", tip)
         
+        // Bill amount retention
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setDouble(billAmount, forKey: "bill_amount")
         defaults.synchronize()
+        
+        // Split bill calculations
+        let twoPerson = total/2
+        let threePerson = total/3
+        let fourPerson = total/4
+        
+        twoPersonLabel.text = String(format: "$%.2f", twoPerson)
+        threePersonLabel.text = String(format: "$%.2f", threePerson)
+        fourPersonLabel.text = String(format: "$%.2f", fourPerson)
     }
 
     @IBAction func onScreenTap(sender: AnyObject) {
