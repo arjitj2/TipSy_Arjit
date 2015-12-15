@@ -45,6 +45,10 @@ class ViewController: UIViewController {
         if a != 0.0 {
             billField.text = String(format: "%.2f", a)
         }
+        
+        billField.becomeFirstResponder()
+        
+        onBillEdit(billField)
     }
     
     override func didReceiveMemoryWarning() {
